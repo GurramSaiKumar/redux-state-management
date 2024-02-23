@@ -1,24 +1,24 @@
 // Import necessary dependencies
 import React from 'react';
 import { connect } from 'react-redux'; // Import connect from 'react-redux'
-import { increment, decrement } from './action'; // Correct the import path for actions
+import { increment_action, decrement_action } from './action'; // Correct the import path for actions
 import { useDispatch } from 'react-redux';
 
 // Define the component
-const CounterComponent = ({ count, test }) => {
+const CounterComponent = ({ increment, decrement }) => {
   const dispatch = useDispatch();
   const handleIncrement = () => {
-    dispatch(increment());
+    dispatch(increment_action());
   };
   const handleDecrement = () => {
-    dispatch(decrement());
+    dispatch(decrement_action());
   }
   return (
     <div>
-      <h2>Count: {count}</h2>
+      <h2>Increment: {increment}</h2>
       <button onClick={handleIncrement}>Increment</button>
       <br></br>
-      <h2>Test: {test}</h2>
+      <h2>Decrement: {decrement}</h2>
       <button onClick={handleDecrement}>Decrement</button>
     </div>
   );
@@ -26,8 +26,8 @@ const CounterComponent = ({ count, test }) => {
 
 // Define mapStateToProps function
 const mapStateToProps = (state) => ({
-  count: state.counter.count, // Assuming you have a 'counter' reducer in your store
-  test: state.counter.test
+  increment: state.counter.count, // Assuming you have a 'counter' reducer in your store
+  decrement: state.counter.test
 });
 
 // Connect the component to the Redux store
